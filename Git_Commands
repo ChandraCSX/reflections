@@ -6,6 +6,62 @@ git config --globar color .ui auto
 git checkout  is useful for restoring previous versions
 
 
+git log
+git status
+
+git init
+git add <filename>
+
+git reset <filename>
+If you accidentally add a file to the staging area, you can remove it using git reset. For example, if you accidentally add lesson_2_reflections.txt, but don’t want it to be committed yet, run git reset lesson_2_reflections.txt and the file will be removed from the staging area, but it will still be in your working directory.
+
+git diff   
+--> compares working directory to staging area
+git diff --staged  
+--> Compares staging area to the most recent commit
+git reset --hard
+--> Resets all changes made to working directory and staging area
+git log --graph --oneline master newbranch
+--> Produces log of commits/changes made to master and newbranch created 
+git checkout -b <newbranchname>  
+--> is equivalent to below commands
+-->git branch <newbranchname>
+-->git checkout <newbranchname>
+git show
+--> will show the changes made by a commit to its parent 
+git branch -d <branch_name>
+--> will delete the branch named <branch_name> 
+-->This will only delete the labels, but not the commits
+--> Commits made by this branch are visible from master branch
+
+gir checkout branch1
+git merge branch2 branch3, 
+--> the merged version will combine branch1 as well as branch2 and branch3. That’s because the branch1 label
+-->will update after you make the merge commit, so it’s unlikely that you didn’t want the changes from 
+-->branch1 included in the merge. For this reason, you should always checkout one of the two branches you’re 
+-->planning on merging before doing the merge. Which one you should check out depends on which branch label 
+-->you want to point to the new commit.
+
+#git checkout branch1
+#git merge branch2
+#--> is sufficent to merge branch2 with branch1... reason for typing git merge branch1  branch2 is to keep 
+#-->mental track
+#
+####
+#Merge conflict
+#If you get a message like this
+#
+#Auto-merging game.js
+#CONFLICT (content): Merge conflict in game.js
+#Automatic merge failed; fix conflicts and then commit the result.
+#then your files were not in the same state as Caroline's when you started the merge. To fix this, complete #the following steps:
+#Restore your files to their state before you started the merge by running git merge --abort
+#Double check the state of your files. If you run git log while the master branch is checked out, you should
+# see Caroline's "Add color" commit as the second-most-recent, and the most recent should be your commit #fixing the bullet bug. If you use git diff to compare your commit to Caroline's, your commit should #introduce the line this.delayBeforeBullet = 10; on line 424. The line should be indented to the same level #as the line below it using only spaces (no tabs), and the line should have no spaces after it.
+#Once your file is in the correct state, create a new commit with your changes.
+#Try the merge again.
+
+
 Errors:
 
 Should not be doing an octopus
